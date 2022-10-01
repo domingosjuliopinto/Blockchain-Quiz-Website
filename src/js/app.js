@@ -22,18 +22,18 @@ App = {
   },
 
   initContract: function() {
-    $.getJSON("Election.json", function(election) {
+    $.getJSON("Poll.json", function(Poll) {
       // Instantiate a new truffle contract from the artifact
-      App.contracts.Election = TruffleContract(election);
+      App.contracts.Poll = TruffleContract(Poll);
       // Connect provider to interact with contract
-      App.contracts.Election.setProvider(App.web3Provider);
+      App.contracts.Poll.setProvider(App.web3Provider);
 
       return App.render();
     });
   },
 
   render: function() {
-    var electionInstance;
+    var PollInstance;
     var loader = $("#loader");
     var content = $("#content");
 
@@ -49,15 +49,15 @@ App = {
     });
 
     // Load contract data
-    App.contracts.Election.deployed().then(function(instance) {
-      electionInstance = instance;
-      return electionInstance.candidatesCount();
+    App.contracts.Poll.deployed().then(function(instance) {
+      PollInstance = instance;
+      return PollInstance.candidatesCount();
     }).then(function(candidatesCount) {
       var candidatesResults = $("#candidatesResults");
       candidatesResults.empty();
 
       for (var i = 1; i <= candidatesCount; i++) {
-        electionInstance.candidates(i).then(function(candidate) {
+        PollInstance.candidates(i).then(function(candidate) {
           var id = candidate[0];
           var name = candidate[1];
           var voteCount = candidate[2];
