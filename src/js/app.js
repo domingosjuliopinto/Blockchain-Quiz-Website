@@ -90,15 +90,17 @@ App = {
           candidatesResults.append(candidateTemplate);
 
           // Render candidate ballot option
-          var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
+          var candidateOption = "<input type='radio' name='poll_option' value='"+ id +"'><label><-- "+name+"</label></input>"
           candidatesSelect.append(candidateOption);
         });
       }
       return PollInstance.voters(App.account);
     }).then(function(hasVoted) {
+      $('table').hide();
       // Do not allow a user to vote
       if(hasVoted) {
         $('form').hide();
+        $('table').show();
       }
       loader.hide();
       content.show();
@@ -108,7 +110,7 @@ App = {
   },
 
   castVote: function() {
-    var candidateId = $('#candidatesSelect').val();
+    var candidateId = $('input:radio[name=poll_option]:checked').val();
     App.contracts.Poll.deployed().then(function(instance) {
       return instance.vote(candidateId, { from: App.account });
     }).then(function(result) {
