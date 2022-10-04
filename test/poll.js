@@ -46,7 +46,7 @@ contract("Poll", function(accounts) {
     })
   });
 
-  it("throws an exception for invalid candiates", function() {
+  it("throws an exception for invalid candidates", function() {
     return Poll.deployed().then(function(instance) {
       PollInstance = instance;
       return PollInstance.vote(99, { from: accounts[1] })

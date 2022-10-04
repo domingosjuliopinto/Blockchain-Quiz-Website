@@ -68,6 +68,7 @@ App = {
       }
     });
 
+    arr = [];
     // Load contract data
     App.contracts.Poll.deployed().then(function(instance) {
       PollInstance = instance;
@@ -80,19 +81,31 @@ App = {
       candidatesSelect.empty();
 
       for (var i = 1; i <= candidatesCount; i++) {
-        PollInstance.candidates(i).then(function(candidate) {
-          var id = candidate[0];
-          var name = candidate[1];
-          var voteCount = candidate[2];
-
-          // Render candidate Result
-          var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
-          candidatesResults.append(candidateTemplate);
-
-          // Render candidate ballot option
-          var candidateOption = "<input type='radio' name='poll_option' value='"+ id +"'><label><-- "+name+"</label></input>"
-          candidatesSelect.append(candidateOption);
-        });
+        console.log(i)
+        console.log(arr);
+        var flag = 0; 
+        for(var j=0;j<arr.length;j++)
+        {
+            if(i == arr[j]){
+              flag = 1;
+            }
+        }
+        if (flag==0){
+          PollInstance.candidates(i).then(function(candidate) {
+            var id = candidate[0];
+            var name = candidate[1];
+            var voteCount = candidate[2];
+  
+            // Render candidate Result
+            var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
+            candidatesResults.append(candidateTemplate);
+  
+            // Render candidate ballot option
+            var candidateOption = "<input type='radio' name='poll_option' value='"+ id +"'><label><-- "+name+"</label></input>"
+            candidatesSelect.append(candidateOption);
+          });
+          arr.push(i)
+        }
       }
       return PollInstance.voters(App.account);
     }).then(function(hasVoted) {
