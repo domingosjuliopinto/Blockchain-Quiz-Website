@@ -69,10 +69,35 @@ App = {
     });
 
     arr = [];
+    qarr = [];
     // Load contract data
     App.contracts.Poll.deployed().then(function(instance) {
       PollInstance = instance;
-      return PollInstance.candidatesCount();
+      return PollInstance.questionsCount();
+    }).then(function(questionsCount){
+      var questionSelect = $("#questionSelect");
+      questionSelect.empty()
+
+      for(var i=1; i <= questionsCount; i++){
+        var flag = 0; 
+        for(var j=0;j<qarr.length;j++)
+        {
+            if(i == qarr[j]){
+              flag = 1;
+            }
+        }
+        if (flag==0){
+          PollInstance.questions(i).then(function(question) {
+            var id = question[0];
+            var ques = question[1];
+  
+            // Render candidate ballot option
+            var questionNumber = "<p>Q."+id+" "+ques+"</p>";
+            questionSelect.append(questionNumber);
+          });
+          qarr.push(i)
+        }
+      }return PollInstance.candidatesCount();
     }).then(function(candidatesCount) {
       var candidatesResults = $("#candidatesResults");
       candidatesResults.empty();
@@ -81,8 +106,6 @@ App = {
       candidatesSelect.empty();
 
       for (var i = 1; i <= candidatesCount; i++) {
-        console.log(i)
-        console.log(arr);
         var flag = 0; 
         for(var j=0;j<arr.length;j++)
         {
@@ -97,7 +120,7 @@ App = {
             var voteCount = candidate[2];
   
             // Render candidate Result
-            var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
+            var candidateTemplate = "<tr><td><b>" + name + "</b></td><td><b>" + voteCount + "</b></td></tr>"
             candidatesResults.append(candidateTemplate);
   
             // Render candidate ballot option

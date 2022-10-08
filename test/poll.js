@@ -11,6 +11,14 @@ contract("Poll", function(accounts) {
     });
   });
 
+  it("initializes with one question", function() {
+    return Poll.deployed().then(function(instance) {
+      return instance.questionsCount();
+    }).then(function(count) {
+      assert.equal(count, 1);
+    });
+  });
+
   it("it initializes the candidates with the correct values", function() {
     return Poll.deployed().then(function(instance) {
       PollInstance = instance;

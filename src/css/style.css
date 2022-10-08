@@ -22,3 +22,23 @@ body{
     border-radius: 50%;
     border: 2px solid;
 }
+
+.customtable{
+    text-align: center;
+    width: 100%;
+    background-color: aqua;
+    color: black;
+    border-radius: 15px;
+}
+
+.customtable table{
+    width: 50%;
+}
+
+.customtable tr{
+    font-size: 20px;
+}
+
+.question-css{
+    font-size: 22px;
+}
