@@ -69,6 +69,7 @@ App = {
     });
 
     arr = [];
+    scoreflag = 1;
     // Load contract data
     App.contracts.Quiz.deployed().then(function(instance) {
       QuizInstance = instance;
@@ -103,6 +104,12 @@ App = {
 
       var candidatesSelect5 = $('#candidatesSelect5');
       candidatesSelect5.empty();
+
+      var userScore = $('#userScore');
+      userScore.empty();
+
+      var Message = $('#Message');
+      Message.empty()
 
       for (var i = 1; i <= candidatesCount; i++) {
         var flag = 0; 
@@ -238,6 +245,33 @@ App = {
       if(hasVoted) {
         $('#form5').hide();
         $('#table5').show();
+      }
+      loader.hide();
+      content.show();
+      return QuizInstance.scores(App.account);
+    }).then(function(yourscores) {
+      var yourmark = yourscores[2];
+      if(scoreflag == 1 ){
+        userScore.append(yourmark);
+        scoreflag = 0;
+        if(yourmark == 0){
+          Message.append("Did you even study for the quiz?")
+        }
+        if(yourmark == 1){
+          Message.append("Disappointing")
+        }
+        if(yourmark == 2){
+          Message.append("You need to study more")
+        }
+        if(yourmark == 3){
+          Message.append("Good. You can do better")
+        }
+        if(yourmark == 4){
+          Message.append("Great. Keep it up")
+        }
+        if(yourmark == 5){
+          Message.append("You are The Special One")
+        }
       }
       loader.hide();
       content.show();

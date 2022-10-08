@@ -32,20 +32,35 @@ contract Quiz {
         uint voteCount;
     }
 
+    //Saving Scores 
+    struct Score{
+        uint uid;
+        address account;
+        uint scoreCount;
+    }
+
     //Store accounts that have voted
     mapping(address => bool) public voters1;
     mapping(address => bool) public voters2;
     mapping(address => bool) public voters3;
     mapping(address => bool) public voters4;
     mapping(address => bool) public voters5;
+    
     // Fetch Candidate
     mapping(uint => Candidate1) public candidates1;
     mapping(uint => Candidate2) public candidates2;
     mapping(uint => Candidate3) public candidates3;
     mapping(uint => Candidate4) public candidates4;
     mapping(uint => Candidate5) public candidates5;
+    
     // Store Candidates Count
     uint public candidatesCount;
+    
+    //Storing and Fetching scores
+    mapping(address => Score) public scores;
+
+    // Store number of scores
+    uint public NoOfScores;
 
     //voted event
     event votedEvent(
@@ -90,6 +105,20 @@ contract Quiz {
         candidates5[candidatesCount] = Candidate5(candidatesCount, _name, 0);
     }
 
+    function addScore (uint _addmark, address _account) public {
+        if(NoOfScores == 0){
+            NoOfScores++;
+            scores[_account] = Score(NoOfScores, _account,_addmark);
+        }else{
+            if (scores[_account].uid > 0){
+                scores[_account].scoreCount = scores[_account].scoreCount + _addmark;
+            }else{
+                NoOfScores++;
+                scores[_account] = Score(NoOfScores, _account,_addmark);
+            }
+        }
+    }
+
     function vote1(uint _candidateId) public {
         // require that they haven't voted before
         require(!voters1[msg.sender]);
@@ -102,6 +131,13 @@ contract Quiz {
 
         // update candidate vote Count
         candidates1[_candidateId].voteCount ++;
+
+        //add quiz score
+        if(_candidateId == 1){
+            addScore(1,msg.sender);
+        }else{
+            addScore(0,msg.sender);
+        }
 
         // trigger voted event
         emit votedEvent(_candidateId);
@@ -120,6 +156,13 @@ contract Quiz {
         // update candidate vote Count
         candidates2[_candidateId].voteCount ++;
 
+        //add quiz score
+        if(_candidateId == 3){
+            addScore(1,msg.sender);
+        }else{
+            addScore(0,msg.sender);
+        }
+
         // trigger voted event
         emit votedEvent(_candidateId);
     }
@@ -136,6 +179,13 @@ contract Quiz {
 
         // update candidate vote Count
         candidates3[_candidateId].voteCount ++;
+
+        //add quiz score
+        if(_candidateId == 5){
+            addScore(1,msg.sender);
+        }else{
+            addScore(0,msg.sender);
+        }
 
         // trigger voted event
         emit votedEvent(_candidateId);
@@ -154,6 +204,13 @@ contract Quiz {
         // update candidate vote Count
         candidates4[_candidateId].voteCount ++;
 
+        //add quiz score
+        if(_candidateId == 7){
+            addScore(1,msg.sender);
+        }else{
+            addScore(0,msg.sender);
+        }
+
         // trigger voted event
         emit votedEvent(_candidateId);
     }
@@ -170,6 +227,13 @@ contract Quiz {
 
         // update candidate vote Count
         candidates5[_candidateId].voteCount ++;
+
+        //add quiz score
+        if(_candidateId == 9){
+            addScore(1,msg.sender);
+        }else{
+            addScore(0,msg.sender);
+        }
 
         // trigger voted event
         emit votedEvent(_candidateId);
