@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Poll Results</title>
+    <title>Quiz Results</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,20 +22,69 @@
     <div class="container" style="width: 650px;">
       <div class="row">
         <div class="col-lg-12">
-          <h1>Poll Results</h1>
+          <h1>Quiz Results</h1>
           <br/>
           <div id="loader">
             <p>Loading...</p>
           </div>
 
           <div id="content">
-            <table class="customtable table">
-              <tbody id="candidatesResults">
+            <p style="font-size: 22px;">Q1. Which Candidate should Win 1?</p>
+            <table class="customtable table" id="table1">
+              <tbody id="candidatesResults1">
               </tbody>
             </table>
          
-            <form onSubmit="App.castVote(); return false;">
-              <div id="candidatesSelect" class="bgradio"></div>
+            <form onSubmit="App.castVote1(); return false;" id="form1">
+              <div id="candidatesSelect1" class="bgradio"></div>
+              <br>
+              <button type="submit" class="btn" style="color: black;">Vote</button>
+            </form>
+            <hr /> 
+            <p style="font-size: 22px;">Q2. Which Candidate should Win 2?</p>
+            <table class="customtable table" id="table2">
+              <tbody id="candidatesResults2">
+              </tbody>
+            </table>
+         
+            <form onSubmit="App.castVote2(); return false;" id="form2">
+              <div id="candidatesSelect2" class="bgradio"></div>
+              <br>
+              <button type="submit" class="btn" style="color: black;">Vote</button>
+            </form>
+            <hr /> 
+            <p style="font-size: 22px;">Q3. Which Candidate should Win 3?</p>
+            <table class="customtable table" id="table3">
+              <tbody id="candidatesResults3">
+              </tbody>
+            </table>
+         
+            <form onSubmit="App.castVote3(); return false;" id="form3">
+              <div id="candidatesSelect3" class="bgradio"></div>
+              <br>
+              <button type="submit" class="btn" style="color: black;">Vote</button>
+            </form>
+            <hr /> 
+            <p style="font-size: 22px;">Q4. Which Candidate should Win 4?</p>
+            <table class="customtable table" id="table4">
+              <tbody id="candidatesResults4">
+              </tbody>
+            </table>
+         
+            <form onSubmit="App.castVote4(); return false;" id="form4">
+              <div id="candidatesSelect4" class="bgradio"></div>
+              <br>
+              <button type="submit" class="btn" style="color: black;">Vote</button>
+            </form>
+            <hr /> 
+            <p style="font-size: 22px;">Q5. Which Candidate should Win 5?</p>
+            <table class="customtable table" id="table5">
+              <tbody id="candidatesResults5">
+              </tbody>
+            </table>
+         
+            <form onSubmit="App.castVote5(); return false;" id="form5">
+              <div id="candidatesSelect5" class="bgradio"></div>
               <br>
               <button type="submit" class="btn" style="color: black;">Vote</button>
             </form>

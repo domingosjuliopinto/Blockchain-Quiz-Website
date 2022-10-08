@@ -23,11 +23,11 @@ App = {
   },
 
   initContract: function() {
-    $.getJSON("Poll.json", function(Poll) {
+    $.getJSON("Quiz.json", function(Quiz) {
       // Instantiate a new truffle contract from the artifact
-      App.contracts.Poll = TruffleContract(Poll);
+      App.contracts.Quiz = TruffleContract(Quiz);
       // Connect provider to interact with contract
-      App.contracts.Poll.setProvider(App.web3Provider);
+      App.contracts.Quiz.setProvider(App.web3Provider);
 
       App.listenForEvents();
 
@@ -37,7 +37,7 @@ App = {
 
   // Listen for events emitted from the contract
   listenForEvents: function() {
-    App.contracts.Poll.deployed().then(function(instance) {
+    App.contracts.Quiz.deployed().then(function(instance) {
       // Restart Chrome if you are unable to receive this event
       // This is a known issue with Metamask
       // https://github.com/MetaMask/metamask-extension/issues/2393
@@ -53,7 +53,7 @@ App = {
   },
 
   render: function() {
-    var PollInstance;
+    var QuizInstance;
     var loader = $("#loader");
     var content = $("#content");
 
@@ -70,15 +70,39 @@ App = {
 
     arr = [];
     // Load contract data
-    App.contracts.Poll.deployed().then(function(instance) {
-      PollInstance = instance;
-      return PollInstance.candidatesCount();
+    App.contracts.Quiz.deployed().then(function(instance) {
+      QuizInstance = instance;
+      return QuizInstance.candidatesCount();
     }).then(function(candidatesCount) {
-      var candidatesResults = $("#candidatesResults");
-      candidatesResults.empty();
+      var candidatesResults1 = $("#candidatesResults1");
+      candidatesResults1.empty();
 
-      var candidatesSelect = $('#candidatesSelect');
-      candidatesSelect.empty();
+      var candidatesSelect1 = $('#candidatesSelect1');
+      candidatesSelect1.empty();
+
+      var candidatesResults2 = $("#candidatesResults2");
+      candidatesResults2.empty();
+
+      var candidatesSelect2 = $('#candidatesSelect2');
+      candidatesSelect2.empty();
+
+      var candidatesResults3 = $("#candidatesResults3");
+      candidatesResults3.empty();
+
+      var candidatesSelect3 = $('#candidatesSelect3');
+      candidatesSelect3.empty();
+
+      var candidatesResults4 = $("#candidatesResults4");
+      candidatesResults4.empty();
+
+      var candidatesSelect4 = $('#candidatesSelect4');
+      candidatesSelect4.empty();
+
+      var candidatesResults5 = $("#candidatesResults5");
+      candidatesResults5.empty();
+
+      var candidatesSelect5 = $('#candidatesSelect5');
+      candidatesSelect5.empty();
 
       for (var i = 1; i <= candidatesCount; i++) {
         var flag = 0; 
@@ -89,29 +113,131 @@ App = {
             }
         }
         if (flag==0){
-          PollInstance.candidates(i).then(function(candidate) {
-            var id = candidate[0];
-            var name = candidate[1];
-            var voteCount = candidate[2];
-  
-            // Render candidate Result
-            var candidateTemplate = "<tr><td><b>" + name + "</b></td><td><b>" + voteCount + "</b></td></tr>"
-            candidatesResults.append(candidateTemplate);
-  
-            // Render candidate ballot option
-            var candidateOption = "<input type='radio' name='poll_option' value='"+ id +"'><label><-- "+name+"</label></input>"
-            candidatesSelect.append(candidateOption);
-          });
+          if(i==1 || i ==2){
+            QuizInstance.candidates1(i).then(function(candidate) {
+              var id = candidate[0];
+              var name = candidate[1];
+              var voteCount = candidate[2];
+    
+              // Render candidate Result
+              var candidateTemplate = "<tr><td><b>" + name + "</b></td><td><b>" + voteCount + "</b></td></tr>"
+              candidatesResults1.append(candidateTemplate);
+    
+              // Render candidate ballot option
+              var candidateOption = "<input type='radio' name='Quiz_option1' value='"+ id +"'><label><-- "+name+"</label></input>"
+              candidatesSelect1.append(candidateOption);
+            });
+          }
+          if(i==3 || i ==4){
+            QuizInstance.candidates2(i).then(function(candidate) {
+              var id = candidate[0];
+              var name = candidate[1];
+              var voteCount = candidate[2];
+    
+              // Render candidate Result
+              var candidateTemplate = "<tr><td><b>" + name + "</b></td><td><b>" + voteCount + "</b></td></tr>"
+              candidatesResults2.append(candidateTemplate);
+    
+              // Render candidate ballot option
+              var candidateOption = "<input type='radio' name='Quiz_option2' value='"+ id +"'><label><-- "+name+"</label></input>"
+              candidatesSelect2.append(candidateOption);
+            });
+          }
+          if(i==5 || i ==6){
+            QuizInstance.candidates3(i).then(function(candidate) {
+              var id = candidate[0];
+              var name = candidate[1];
+              var voteCount = candidate[2];
+    
+              // Render candidate Result
+              var candidateTemplate = "<tr><td><b>" + name + "</b></td><td><b>" + voteCount + "</b></td></tr>"
+              candidatesResults3.append(candidateTemplate);
+    
+              // Render candidate ballot option
+              var candidateOption = "<input type='radio' name='Quiz_option3' value='"+ id +"'><label><-- "+name+"</label></input>"
+              candidatesSelect3.append(candidateOption);
+            });
+          }
+          if(i==7 || i ==8){
+            QuizInstance.candidates4(i).then(function(candidate) {
+              var id = candidate[0];
+              var name = candidate[1];
+              var voteCount = candidate[2];
+    
+              // Render candidate Result
+              var candidateTemplate = "<tr><td><b>" + name + "</b></td><td><b>" + voteCount + "</b></td></tr>"
+              candidatesResults4.append(candidateTemplate);
+    
+              // Render candidate ballot option
+              var candidateOption = "<input type='radio' name='Quiz_option4' value='"+ id +"'><label><-- "+name+"</label></input>"
+              candidatesSelect4.append(candidateOption);
+            });
+          }
+          if(i==9 || i ==10){
+            QuizInstance.candidates5(i).then(function(candidate) {
+              var id = candidate[0];
+              var name = candidate[1];
+              var voteCount = candidate[2];
+    
+              // Render candidate Result
+              var candidateTemplate = "<tr><td><b>" + name + "</b></td><td><b>" + voteCount + "</b></td></tr>"
+              candidatesResults5.append(candidateTemplate);
+    
+              // Render candidate ballot option
+              var candidateOption = "<input type='radio' name='Quiz_option5' value='"+ id +"'><label><-- "+name+"</label></input>"
+              candidatesSelect5.append(candidateOption);
+            });
+          }
           arr.push(i)
         }
       }
-      return PollInstance.voters(App.account);
+      return QuizInstance.voters1(App.account);
     }).then(function(hasVoted) {
-      $('table').hide();
+      $('#table1').hide();
       // Do not allow a user to vote
       if(hasVoted) {
-        $('form').hide();
-        $('table').show();
+        $('#form1').hide();
+        $('#table1').show();
+      }
+      loader.hide();
+      content.show();
+      return QuizInstance.voters2(App.account);
+    }).then(function(hasVoted) {
+      $('#table2').hide();
+      // Do not allow a user to vote
+      if(hasVoted) {
+        $('#form2').hide();
+        $('#table2').show();
+      }
+      loader.hide();
+      content.show();
+      return QuizInstance.voters3(App.account);
+    }).then(function(hasVoted) {
+      $('#table3').hide();
+      // Do not allow a user to vote
+      if(hasVoted) {
+        $('#form3').hide();
+        $('#table3').show();
+      }
+      loader.hide();
+      content.show();
+      return QuizInstance.voters4(App.account);
+    }).then(function(hasVoted) {
+      $('#table4').hide();
+      // Do not allow a user to vote
+      if(hasVoted) {
+        $('#form4').hide();
+        $('#table4').show();
+      }
+      loader.hide();
+      content.show();
+      return QuizInstance.voters5(App.account);
+    }).then(function(hasVoted) {
+      $('#table5').hide();
+      // Do not allow a user to vote
+      if(hasVoted) {
+        $('#form5').hide();
+        $('#table5').show();
       }
       loader.hide();
       content.show();
@@ -120,10 +246,10 @@ App = {
     });
   },
 
-  castVote: function() {
-    var candidateId = $('input:radio[name=poll_option]:checked').val();
-    App.contracts.Poll.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
+  castVote1: function() {
+    var candidateId = $('input:radio[name=Quiz_option1]:checked').val();
+    App.contracts.Quiz.deployed().then(function(instance) {
+      return instance.vote1(candidateId, { from: App.account });
     }).then(function(result) {
       // Wait for votes to update
       $("#content").hide();
@@ -131,7 +257,59 @@ App = {
     }).catch(function(err) {
       console.error(err);
     });
-  }
+  },
+
+  castVote2: function() {
+    var candidateId = $('input:radio[name=Quiz_option2]:checked').val();
+    App.contracts.Quiz.deployed().then(function(instance) {
+      return instance.vote2(candidateId, { from: App.account });
+    }).then(function(result) {
+      // Wait for votes to update
+      $("#content").hide();
+      $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+  },
+
+  castVote3: function() {
+    var candidateId = $('input:radio[name=Quiz_option3]:checked').val();
+    App.contracts.Quiz.deployed().then(function(instance) {
+      return instance.vote3(candidateId, { from: App.account });
+    }).then(function(result) {
+      // Wait for votes to update
+      $("#content").hide();
+      $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+  },
+
+  castVote4: function() {
+    var candidateId = $('input:radio[name=Quiz_option4]:checked').val();
+    App.contracts.Quiz.deployed().then(function(instance) {
+      return instance.vote4(candidateId, { from: App.account });
+    }).then(function(result) {
+      // Wait for votes to update
+      $("#content").hide();
+      $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+  },
+
+  castVote5: function() {
+    var candidateId = $('input:radio[name=Quiz_option5]:checked').val();
+    App.contracts.Quiz.deployed().then(function(instance) {
+      return instance.vote5(candidateId, { from: App.account });
+    }).then(function(result) {
+      // Wait for votes to update
+      $("#content").hide();
+      $("#loader").show();
+    }).catch(function(err) {
+      console.error(err);
+    });
+  },
 };
 
 $(function() {
