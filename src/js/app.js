@@ -69,35 +69,10 @@ App = {
     });
 
     arr = [];
-    qarr = [];
     // Load contract data
     App.contracts.Poll.deployed().then(function(instance) {
       PollInstance = instance;
-      return PollInstance.questionsCount();
-    }).then(function(questionsCount){
-      var questionSelect = $("#questionSelect");
-      questionSelect.empty()
-
-      for(var i=1; i <= questionsCount; i++){
-        var flag = 0; 
-        for(var j=0;j<qarr.length;j++)
-        {
-            if(i == qarr[j]){
-              flag = 1;
-            }
-        }
-        if (flag==0){
-          PollInstance.questions(i).then(function(question) {
-            var id = question[0];
-            var ques = question[1];
-  
-            // Render candidate ballot option
-            var questionNumber = "<p>Q."+id+" "+ques+"</p>";
-            questionSelect.append(questionNumber);
-          });
-          qarr.push(i)
-        }
-      }return PollInstance.candidatesCount();
+      return PollInstance.candidatesCount();
     }).then(function(candidatesCount) {
       var candidatesResults = $("#candidatesResults");
       candidatesResults.empty();

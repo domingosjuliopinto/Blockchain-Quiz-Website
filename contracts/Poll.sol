@@ -8,12 +8,6 @@ contract Poll {
         uint voteCount;
     }
 
-    //Model a Question
-    struct Question{
-        uint id;
-        string question;
-    }
-
     //Store accounts that have voted
     mapping(address => bool) public voters;
     // Store Candidates
@@ -22,18 +16,12 @@ contract Poll {
     // Store Candidates Count
     uint public candidatesCount;
 
-    // Fetch Questions
-    mapping(uint => Question) public questions;
-    // Store Questions Count
-    uint public questionsCount;
-
     //voted event
     event votedEvent(
         uint indexed _candidateId
     );
 
     constructor() public {
-        addQuestion("Which candidate should win ?");
         addCandidate("Candidate 1");
         addCandidate("Candidate 2");
     }
@@ -41,11 +29,6 @@ contract Poll {
     function addCandidate (string memory _name) private {
         candidatesCount ++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
-    }
-
-    function addQuestion (string memory _ques) private {
-        questionsCount ++;
-        questions[questionsCount] = Question(questionsCount, _ques);
     }
 
     function vote(uint _candidateId) public {
