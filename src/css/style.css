@@ -38,3 +38,9 @@ body{
 .customtable tr{
     font-size: 20px;
 }
+
+.customtable caption{
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
