@@ -1,20 +1,37 @@
 # Blockchain-Quiz-Website
+This is a blockchain quiz website made by using HTML, JS, CSS and Blockchain technologies such as Solidity and Truffle.
 
-## Introduction: 
-Educational technology (E-learning) allows the reduction of educational costs and the
-introduction of personalized education. Online education and online testing have stated to
-become widespread in the late 1980s with the expansion of internet connectivity and have
-evolved from individual. Even from the first implementations of such systems, it was important to use the latest
-technologies in order to offer the participants the best possible experience when browsing the
-course or taking an online test. Components of an online test are the user interface, the data
-storage and the business logic. Therefore, we have made a blockchain quiz system made
-using solidity language and JavaScript in order to explore blockchain technologies and how
-we can use it in further implementation of various other projects. 
+## This Readme Contains
+* [Introduction](#introduction)
+* [Technologies used](#technologies-used)
+* [Steps to Run](#steps-to-run)
+* [Activity Diagram](#activity-diagram)
+* [Screenshots](#screenshots)
+* [References](#references)
 
-## Techonologies Used: 
-- React, nodeJs, Solidity, Truffle.
-- HTML, CSS 
-- Ganache (For ethers)
+## Introduction
+The ability to take the quiz anytime and anywhere is provided by our quiz application. The user doesn't have to wait for the result since it's displayed once he/she answers one question thus time is saved. All users/students get the correct answer after he/she has answered. We have created a blockchain-based solution that enables students to complete online quiz without worrying about their privacy or security. HTML and CSS are used to construct user interfaces, and JavaScript and Solidity are used to execute and deploy smart contracts. The user can see how many have chosen which answer without knowing who chose what. Once the user answers a question, he/she cannot answer it again. The score of correct answers is displayed at the end. 
+
+## Technologies Used: 
+- NodeJs 
+- Solidity
+- Truffle
+- HTML
+- CSS
+- Javascript 
+- Ganache (For testing ethers)
+- Metamask
+
+## Steps to Run
+* We first install all the prerequisites ie. NodeJs, Solidity, Metamask, Truffle
+* Open ganache. It gives us ten accounts for development purposes. 
+* Connect Metamask to Ganache and import account in metamask from ganache.
+* In the terminal type 'truffle migrate --reset'
+* Then type 'npm run dev' to run it
+* Check metamask and see whether the account is connected to the website. If not, connect it
+
+## Activity Diagram
+![](diagram/Picture1.png)
 
 ## Screenshots
 ![Capture0](https://user-images.githubusercontent.com/71319075/199651813-e4e4fff9-85b0-4eed-8ecd-8fea51bd70e2.PNG)
@@ -25,3 +42,7 @@ we can use it in further implementation of various other projects.
 ![Capture5](https://user-images.githubusercontent.com/71319075/199652251-8ed5a2e2-6520-4718-9aca-fd8dffab4337.PNG)
 ![Capture6](https://user-images.githubusercontent.com/71319075/199652260-02bad6b4-b98a-4290-82c7-eec894822b6c.PNG)
 ![Capture7](https://user-images.githubusercontent.com/71319075/199652267-c747eaec-75ee-4997-aff7-87ce13df2b05.PNG)
+
+## References
+* <a href='https://youtu.be/3681ZYbDSSk'>https://youtu.be/3681ZYbDSSk</a>
+* <a href='https://ethereum.stackexchange.com/questions/66202/undefined-results-for-web3-eth-accounts-in-truffle-console'>https://ethereum.stackexchange.com/questions/66202/undefined-results-for-web3-eth-accounts-in-truffle-console</a>
