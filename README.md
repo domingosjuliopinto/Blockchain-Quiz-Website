@@ -23,12 +23,28 @@ The ability to take the quiz anytime and anywhere is provided by our quiz applic
 - Metamask
 
 ## Steps to Run
-* We first install all the prerequisites ie. NodeJs, Solidity, Metamask, Truffle
+* We first install all the prerequisites ie. NodeJs, Metamask, Truffle (Note: Truffle has to be downloaded by running the command 'npm install -g truffle' in the terminal)
 * Open ganache. It gives us ten accounts for development purposes. 
-* Connect Metamask to Ganache and import account in metamask from ganache.
-* In the terminal type 'truffle migrate --reset'
+* Connect Metamask to Ganache Network (Note: If first time then click on the add network option and then click add a new network manually. RPC Server Id will be in Ganache. Chain id should be 1337. currency will be ETH). 
+* Then import account in metamask from ganache (Note: Click on the key icon besides the account to get the private key).
+* In the terminal type 'truffle migrate --reset' 
+(Note: If for this step you are getting error 'cannot be loaded because running scripts is disabled on this system.' then 
+1. Open PowerShell as an administrator. Right-click on the PowerShell icon and select "Run as administrator."
+
+2. In the PowerShell window, run the following command to check the current execution policy:
+
+   Get-ExecutionPolicy
+   
+3. If the execution policy is set to "Restricted" or "AllSigned," it means that PowerShell scripts are blocked by default. To change the execution policy, run the following command:
+
+   Set-ExecutionPolicy Unrestricted
+
+4. You will be prompted to confirm the change. Type Y and press Enter.
+
+5. After changing the execution policy, try running the script again.)
+
 * Then type 'npm run dev' to run it
-* Check metamask and see whether the account is connected to the website. If not, connect it
+* Check metamask and see whether the account is connected to the website. If it's not connected, connect it by clicking on the 'connect site manually' option and then refresh
 
 ## Activity Diagram
 ![](diagram/Picture1.png)
@@ -46,3 +62,4 @@ The ability to take the quiz anytime and anywhere is provided by our quiz applic
 ## References
 * <a href='https://youtu.be/3681ZYbDSSk'>https://youtu.be/3681ZYbDSSk</a>
 * <a href='https://ethereum.stackexchange.com/questions/66202/undefined-results-for-web3-eth-accounts-in-truffle-console'>https://ethereum.stackexchange.com/questions/66202/undefined-results-for-web3-eth-accounts-in-truffle-console</a>
+* <a href='https://www.sharepointdiary.com/2014/03/fix-for-powershell-script-cannot-be-loaded-because-running-scripts-is-disabled-on-this-system.html'>https://www.sharepointdiary.com/2014/03/fix-for-powershell-script-cannot-be-loaded-because-running-scripts-is-disabled-on-this-system.html</a>

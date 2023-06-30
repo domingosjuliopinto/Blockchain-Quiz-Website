@@ -131,8 +131,13 @@ App = {
               answersResults1.append(answerTemplate);
     
               // Render answer ballot option
-              var answerOption = "<input type='radio' name='Quiz_option1' value='"+ id +"'><label><-- "+name+"</label></input>"
-              answersSelect1.append(answerOption);
+              if(i%2!=0){
+                var answerOption = "<input type='radio' name='Quiz_option1' value='"+ id +"' checked><label><-- "+name+"</label></input>"
+                answersSelect1.append(answerOption);
+              }else{
+                var answerOption = "<input type='radio' name='Quiz_option1' value='"+ id +"'><label><-- "+name+"</label></input>"
+                answersSelect1.append(answerOption);
+              }
             });
           }
           if(i==3 || i ==4){
@@ -146,8 +151,13 @@ App = {
               answersResults2.append(answerTemplate);
     
               // Render answer ballot option
-              var answerOption = "<input type='radio' name='Quiz_option2' value='"+ id +"'><label><-- "+name+"</label></input>"
-              answersSelect2.append(answerOption);
+              if(i%2!=0){
+                var answerOption = "<input type='radio' name='Quiz_option2' value='"+ id +"' checked><label><-- "+name+"</label></input>"
+                answersSelect2.append(answerOption);
+              }else{
+                var answerOption = "<input type='radio' name='Quiz_option2' value='"+ id +"'><label><-- "+name+"</label></input>"
+                answersSelect2.append(answerOption);
+              }
             });
           }
           if(i==5 || i ==6){
@@ -161,8 +171,13 @@ App = {
               answersResults3.append(answerTemplate);
     
               // Render answer ballot option
-              var answerOption = "<input type='radio' name='Quiz_option3' value='"+ id +"'><label><-- "+name+"</label></input>"
-              answersSelect3.append(answerOption);
+              if(i%2==0){
+                var answerOption = "<input type='radio' name='Quiz_option3' value='"+ id +"'><label><-- "+name+"</label></input>"
+                answersSelect3.append(answerOption);
+              }else{
+                var answerOption = "<input type='radio' name='Quiz_option3' value='"+ id +"' checked><label><-- "+name+"</label></input>"
+                answersSelect3.append(answerOption);
+              }
             });
           }
           if(i==7 || i ==8){
@@ -176,8 +191,13 @@ App = {
               answersResults4.append(answerTemplate);
     
               // Render answer ballot option
-              var answerOption = "<input type='radio' name='Quiz_option4' value='"+ id +"'><label><-- "+name+"</label></input>"
-              answersSelect4.append(answerOption);
+              if(i%2!=0){
+                var answerOption = "<input type='radio' name='Quiz_option4' value='"+ id +"' checked><label><-- "+name+"</label></input>"
+                answersSelect4.append(answerOption);
+              }else{
+                var answerOption = "<input type='radio' name='Quiz_option4' value='"+ id +"'><label><-- "+name+"</label></input>"
+                answersSelect4.append(answerOption);
+              }
             });
           }
           if(i==9 || i ==10){
@@ -191,8 +211,13 @@ App = {
               answersResults5.append(answerTemplate);
     
               // Render answer ballot option
-              var answerOption = "<input type='radio' name='Quiz_option5' value='"+ id +"'><label><-- "+name+"</label></input>"
-              answersSelect5.append(answerOption);
+              if(i%2!=0){
+                var answerOption = "<input type='radio' name='Quiz_option5' value='"+ id +"' checked><label><-- "+name+"</label></input>"
+                answersSelect5.append(answerOption);
+              }else{
+                var answerOption = "<input type='radio' name='Quiz_option5' value='"+ id +"'><label><-- "+name+"</label></input>"
+                answersSelect5.append(answerOption);
+              }
             });
           }
           arr.push(i)
